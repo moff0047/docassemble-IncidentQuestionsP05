@@ -1,0 +1,103 @@
+mandatory: true
+question: |
+  Incident Information
+subquestion: |
+  You will now be asked questions about the incident you are reporting.
+  
+  If you enter any incorrect information, there will be a chance to change it later.
+  
+  When you are ready to begin, press **Continue**.
+continue button field: user_saw_intro 
+---
+mandatory: true
+question: |
+  Incident Questions
+subquestion: |
+  Thank you for filling out this section of the form.
+  
+  Below you will see a table with the information you have provided.
+  
+  Question                                            |Response
+  ----------------------------------------------------|---------------------
+  What date did the incident occured?                 |${ EQLdate }
+  What time did the incident occured?                 |${ EQLtime }
+  Where did this happen?                              |${ EQLwhere }
+  Who was there?                                      |${ EQLwho }
+  What happened?                                      |${ EQLwhat }
+  Was there an assistance or service animal involved? |${ EQLanimal }
+
+  If any of the above information is incorrect, press **Start Again** to enter the information again. 
+  
+  If the above information is correct, press **Continue** to move onto the next section.
+  
+buttons:
+ - Start Again: restart
+ - Continue: continue
+---
+mandatory: true
+question: |
+  When did the incident you are reporting happen?
+fields:
+  - Date: EQLdate
+    datatype: date
+  - Time: EQLtime
+    datatype: time
+right: |
+  ###**Note**
+
+  If you cannot remember the exact date and time, a rough estimate will be fine.
+---
+mandatory: true
+question: |
+  Where did this happen?
+fields: 
+  - Please choose: EQLwhere
+    choices:
+    - Home 
+    - Work or other employment
+    - School/University/TAFE/Other education facility
+    - Public transport
+    - Restaurant or cafe
+    - Public setting
+    - Sporting or recreational actiivity
+    - Accessing goods or services
+    - Shopping centre or mall
+    - I do not remember
+    - Other
+  - Please specify: EQLwhere
+    show if:
+      variable: EQLwhere
+      is: Other
+---
+mandatory: true
+question: |
+  Who was there?
+fields:
+  - Please tell us who was involved or if there werre any witnesses: EQLwho
+    input type: area
+    rows: 10
+---
+mandatory: true
+question: |
+  What happened?
+fields:
+  - Please tell us what happened: EQLwhat
+    input type: area
+    rows: 10
+---
+mandatroy: true
+question: |
+  Was there an assistance or service animal involved in this incident?
+field: EQLanimal
+choices:
+  - Yes
+  - No
+right: |
+  ###**Examples**
+
+  * Did someone ask for the animal to be controlled?
+  
+  * Did someone suspect that the animal was unhygineic or had a disease?
+  
+  * Did someone ask if the animal has been properly trained?
+---
